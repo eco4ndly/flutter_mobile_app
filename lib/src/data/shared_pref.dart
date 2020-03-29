@@ -1,5 +1,11 @@
+import 'package:get_it/get_it.dart';
+
 abstract class SharedPrefData {
   void setToken(String token);
 
-  void getToken();
+  String getToken();
+
+  static SharedPrefData getInstance() {
+    return GetIt.I<SharedPrefData>();
+  }
 }

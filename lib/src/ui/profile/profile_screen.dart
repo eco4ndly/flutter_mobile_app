@@ -4,6 +4,7 @@ import 'package:fluttermobileapp/src/base/ui_event.dart';
 import 'package:fluttermobileapp/src/data/model/profile_screen/post_network_model.dart';
 import 'package:fluttermobileapp/src/data/model/profile_screen/profile_details_network_model.dart';
 import 'package:fluttermobileapp/src/data/model/profile_screen/profile_screen_arg.dart';
+import 'package:fluttermobileapp/src/data/shared_pref.dart';
 import 'package:fluttermobileapp/src/infra/bloc/bloc_provider.dart';
 import 'package:fluttermobileapp/src/infra/bloc/event_listener.dart';
 import 'package:fluttermobileapp/src/ui/home/home_screen.dart';
@@ -44,6 +45,13 @@ class _ProfileScreenState extends State<_ProfileScreenInternal> {
   bool redirect = false;
 
   GlobalKey<ScaffoldState> _scafoldKey = GlobalKey();
+  SharedPrefData _sharedPrefData;
+
+  @override
+  void initState() {
+    _sharedPrefData = SharedPrefData.getInstance();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +69,9 @@ class _ProfileScreenState extends State<_ProfileScreenInternal> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  Text(
+                      "Token is: ${_sharedPrefData.getToken()}",
+                  ),
                   StreamBuilder<Post>(
                     stream: BlocProvider
                         .of<ProfileBloc>(context)

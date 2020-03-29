@@ -1,4 +1,7 @@
 {
   "get_details": "Get Details",
-  "go_to_profile": "Go to Profile"
+  "go_to_profile": "Go to Profile",
+  "enter_token_value": "Enter Token Value",
+  "set_token": "Set Token",
+  "token_is": "Token Is: "
 }

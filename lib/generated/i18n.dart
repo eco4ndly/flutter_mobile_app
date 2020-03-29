@@ -21,8 +21,11 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  String get enter_token_value => "Enter Token Value";
   String get get_details => "Get Details";
   String get go_to_profile => "Go to Profile";
+  String get set_token => "Set Token";
+  String get token_is => "Token Is: ";
 }
 
 class $en extends S {

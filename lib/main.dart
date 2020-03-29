@@ -11,12 +11,14 @@ import 'package:get_it/get_it.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  setUpDependencyInjection();
-
-  runApp(TheAwesomeApp());
+  setUpDependencyInjection().then((_) {
+    runApp(TheAwesomeApp());
+  });
 }
 
-void setUpDependencyInjection() {
-  GetIt.instance.registerLazySingleton<SharedPrefData>(() => SharedPrefsImpl());
+Future<int> setUpDependencyInjection() async {
+  SharedPrefData sharedPrefData = await SharedPrefsImpl.initialize();
+  GetIt.instance.registerLazySingleton<SharedPrefData>(() => sharedPrefData);
   GetIt.instance.registerLazySingleton<WebServices>(() => WebServicesImpl(UrlConstants.BASE_URL));
+  return 0;
 }

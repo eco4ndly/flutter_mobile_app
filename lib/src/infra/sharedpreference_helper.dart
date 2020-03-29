@@ -7,9 +7,12 @@ class SharedPrefsImpl implements SharedPrefData{
 
   SharedPreferences _prefs;
 
-  Future<void> initialize() async {
-    _prefs = await SharedPreferences.getInstance();
-    return 0;
+  SharedPrefsImpl._internal();
+
+  static Future<SharedPrefsImpl> initialize() async {
+    SharedPrefsImpl spi = SharedPrefsImpl._internal();
+    spi._prefs = await SharedPreferences.getInstance();
+    return spi;
   }
 
   @override
